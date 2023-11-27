@@ -293,7 +293,47 @@
           - if Group.joins(:messages).where(department: "山陰の蔵").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "山陰の蔵").count
             .report-department-updated-icon
               %i.fas.fa-check
-      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","四季酒造","京都酒造","その他・退職者"]).each do |g|
+      .side-bar__group__department
+        -if @group.department == "テスト"
+          %details{ open: true }
+            %summary テスト
+            - current_user.groups.where(department: "テスト").each do |g|
+              = link_to group_messages_path(g) do
+                - if g.id == @group.id
+                  .side-bar__group__department__name-selected
+                    .report-icon
+                      %i.fas.fa-book-open
+                    = g.name
+                    - if g.messages.where("messages.created_at >= ?", Time.zone.now.beginning_of_day).exists?
+                      .report-updated-icon
+                        %i.fas.fa-check
+                - else
+                  .side-bar__group__department__name
+                    .report-icon
+                      %i.fas.fa-book
+                    = g.name
+                    - if g.messages.where("messages.created_at >= ?", Time.zone.now.beginning_of_day).exists?
+                      .report-updated-icon
+                        %i.fas.fa-check
+          - if Group.joins(:messages).where(department: "テスト").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "テスト").count
+            .report-department-updated-icon
+              %i.fas.fa-check
+        - else
+          %details
+            %summary テスト
+            - current_user.groups.where(department: "テスト").each do |g|
+              = link_to group_messages_path(g) do
+                .side-bar__group__department__name
+                  .report-icon
+                    %i.fas.fa-book
+                  = g.name
+                  - if g.messages.where("messages.created_at >= ?", Time.zone.now.beginning_of_day).exists?
+                    .report-updated-icon
+                      %i.fas.fa-check
+          - if Group.joins(:messages).where(department: "テスト").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "テスト").count
+            .report-department-updated-icon
+              %i.fas.fa-check
+      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","テスト","四季酒造","京都酒造","その他・退職者"]).each do |g|
         = link_to group_messages_path(g) do
           - if g.id == @group.id
             .side-bar__group__department__name-selected
@@ -392,7 +432,7 @@
           - if Group.joins(:messages).where(department: "四季酒造").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "四季酒造").count
             .report-department-updated-icon
               %i.fas.fa-check
-      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","四季酒造","京都酒造","その他・退職者"]).each do |g|
+      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","テスト","四季酒造","京都酒造","その他・退職者"]).each do |g|
         = link_to group_messages_path(g) do
           - if g.id == @group.id
             .side-bar__group__department__name-selected
