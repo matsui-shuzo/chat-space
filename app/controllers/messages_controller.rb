@@ -6,19 +6,39 @@ class MessagesController < ApplicationController
     @messages = @group.messages.includes(:user).order(created_at: "DESC")
   end
   
+  # def create
+  #   @messages = @group.messages.new(message_params)
+  #   if @messages.save
+  #     flash[:notice] = "日報を送信しました"
+  #     redirect_to group_messages_path(@group)
+  #     # respond_to do |format|
+  #     #   format.html { redirect_to group_messages_path(@group), notice: "日報を送信しました" }
+  #     #   format.json
+  #     # end
+  #   else
+  #     redirect_to group_messages_path(@group), alert: "日報を送信できませんでした"
+  #   end
+  # end
+
   def create
-    @messages = @group.messages.new(message_params)
-    if @messages.save
-      flash[:notice] = "日報を送信しました"
-      redirect_to group_messages_path(@group)
-      # respond_to do |format|
-      #   format.html { redirect_to group_messages_path(@group), notice: "日報を送信しました" }
-      #   format.json
-      # end
-    else
-      redirect_to group_messages_path(@group), alert: "日報を送信できませんでした"
+    @message = @group.messages.new(message_params)
+    respond_to do |format|
+      if @message.save
+        format.html do
+          flash[:notice] = "日報を送信しました"
+          redirect_to group_messages_path(@group)
+        end
+        format.json { render json: @message, status: :created }
+      else
+        format.html do
+          flash[:alert] = "メッセージの送信に失敗しました"
+          render :new
+        end
+        format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
     end
   end
+  
 
   def edit
     @message = Message.find(params[:id])
