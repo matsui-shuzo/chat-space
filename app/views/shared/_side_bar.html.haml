@@ -120,21 +120,6 @@
             %i.fas.fa-check
       .side-bar__group__department
         %details
-          %summary ㈱ビスタ
-          - current_user.groups.where(department: "㈱ビスタ").each do |g|
-            = link_to group_messages_path(g) do
-              .side-bar__group__department__name
-                .report-icon
-                  %i.fas.fa-book
-                = g.name
-                - if g.messages.where("messages.created_at >= ?", Time.zone.now.beginning_of_day).exists?
-                  .report-updated-icon
-                    %i.fas.fa-check
-        - if Group.joins(:messages).where(department: "㈱ビスタ").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "㈱ビスタ").count
-          .report-department-updated-icon
-            %i.fas.fa-check
-      .side-bar__group__department
-        %details
           %summary Mui
           - current_user.groups.where(department: "Mui").each do |g|
             = link_to group_messages_path(g) do
@@ -163,7 +148,7 @@
         - if Group.joins(:messages).where(department: "㈿VISTA").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "㈿VISTA").count
           .report-department-updated-icon
             %i.fas.fa-check
-      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","㈱ビスタ","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
+      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
         = link_to group_messages_path(g) do
           .side-bar__group__department__name
             .report-icon
@@ -210,7 +195,7 @@
         - if Group.joins(:messages).where(department: "四季酒造").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "四季酒造").count
           .report-department-updated-icon
             %i.fas.fa-check
-      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","㈱ビスタ","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
+      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
         = link_to group_messages_path(g) do
           .side-bar__group__department__name
             .report-icon
@@ -335,21 +320,6 @@
             %i.fas.fa-check
       .side-bar__group__department
         %details
-          %summary ㈱ビスタ
-          - current_user.groups.where(department: "㈱ビスタ").each do |g|
-            = link_to group_messages_path(g) do
-              .side-bar__group__department__name
-                .report-icon
-                  %i.fas.fa-book
-                = g.name
-                - if g.messages.where("messages.created_at >= ?", Time.zone.now.beginning_of_day).exists?
-                  .report-updated-icon
-                    %i.fas.fa-check
-        - if Group.joins(:messages).where(department: "㈱ビスタ").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "㈱ビスタ").count
-          .report-department-updated-icon
-            %i.fas.fa-check
-      .side-bar__group__department
-        %details
           %summary Mui
           - current_user.groups.where(department: "Mui").each do |g|
             = link_to group_messages_path(g) do
@@ -423,7 +393,7 @@
         - if Group.joins(:messages).where(department: "その他・退職者").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "その他・退職者").count
           .report-department-updated-icon
             %i.fas.fa-check
-      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","㈱ビスタ","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
+      - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
         = link_to group_messages_path(g) do
           .side-bar__group__department__name
             .report-icon
@@ -582,21 +552,6 @@
             %i.fas.fa-check
       .side-bar-mobile__group__department
         %details
-          %summary ㈱ビスタ
-          - current_user.groups.where(department: "㈱ビスタ").each do |g|
-            = link_to group_messages_path(g) do
-              .side-bar-mobile__group__department__name
-                .report-icon
-                  %i.fas.fa-book
-                = g.name
-                - if g.messages.where("messages.created_at >= ?", Time.zone.now.beginning_of_day).exists?
-                  .report-updated-icon
-                    %i.fas.fa-check
-        - if Group.joins(:messages).where(department: "㈱ビスタ").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "㈱ビスタ").count
-          .report-department-updated-icon
-            %i.fas.fa-check
-      .side-bar-mobile__group__department
-        %details
           %summary Mui
           - current_user.groups.where(department: "Mui").each do |g|
             = link_to group_messages_path(g) do
@@ -626,7 +581,7 @@
           .report-department-updated-icon
             %i.fas.fa-check
       .side-bar-mobile__group__department
-        - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","㈱ビスタ","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
+        - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
           = link_to group_messages_path(g) do
             .side-bar-mobile__group__department__name
               .report-icon
@@ -672,7 +627,7 @@
           .report-department-updated-icon
             %i.fas.fa-check
       .side-bar-mobile__group__department
-        - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","㈱ビスタ","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
+        - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
           = link_to group_messages_path(g) do
             .side-bar-mobile__group__department__name
               .report-icon
@@ -796,21 +751,6 @@
             %i.fas.fa-check
       .side-bar-mobile__group__department
         %details
-          %summary ㈱ビスタ
-          - current_user.groups.where(department: "㈱ビスタ").each do |g|
-            = link_to group_messages_path(g) do
-              .side-bar-mobile__group__department__name
-                .report-icon
-                  %i.fas.fa-book
-                = g.name
-                - if g.messages.where("messages.created_at >= ?", Time.zone.now.beginning_of_day).exists?
-                  .report-updated-icon
-                    %i.fas.fa-check
-        - if Group.joins(:messages).where(department: "㈱ビスタ").where("messages.created_at >= ?", Time.zone.now.beginning_of_day).count >= current_user.groups.where(department: "㈱ビスタ").count
-          .report-department-updated-icon
-            %i.fas.fa-check
-      .side-bar-mobile__group__department
-        %details
           %summary Mui
           - current_user.groups.where(department: "Mui").each do |g|
             = link_to group_messages_path(g) do
@@ -885,7 +825,7 @@
           .report-department-updated-icon
             %i.fas.fa-check
       .side-bar-mobile__group__department
-        - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","㈱ビスタ","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
+        - current_user.groups.where.not(department: ["営業部","貿易部","システム部","企画部","人事部","経理部","山陰の蔵","Mui","㈿VISTA","四季酒造","京都酒造","その他・退職者"]).each do |g|
           = link_to group_messages_path(g) do
             .side-bar-mobile__group__department__name
               .report-icon
